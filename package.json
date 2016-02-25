@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Gets crossref metadata in batch",
   "main": "index.js",
+  "bin": {
+    "crossref-metadata-scraper": "cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/karissa/crossref-metadata-scraper/issues"
   },
-  "homepage": "https://github.com/karissa/crossref-metadata-scraper#readme"
+  "homepage": "https://github.com/karissa/crossref-metadata-scraper#readme",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "paged-http-stream": "^1.0.1",
+    "querystring": "^0.2.0"
+  }
 }
