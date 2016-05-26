@@ -3,7 +3,6 @@ var args = require('minimist')(process.argv.slice(2))
 var scraper = require('./')
 
 var opts = {
-  offset: args.offset,
   limit: args.limit,
   rows: args.rows
 }

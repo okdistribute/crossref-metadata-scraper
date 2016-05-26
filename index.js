@@ -3,8 +3,7 @@ var pager = require('paged-http-stream')
 
 module.exports = function (opts) {
   var i = 0
-  var offset = opts.offset || 0
-  var limit = opts.limit || 1000
+  var limit = opts.limit || 0
   var rows = opts.rows || 250
 
   function getOpts (data) {
@@ -18,12 +17,12 @@ module.exports = function (opts) {
   function next (data) {
     if (data.message.items.length === 0) return
     i += data.message.items.length
-    if (i >= limit) return
+    if (limit && i >= limit) return
     return getOpts({
-      offset: data.message.query['start-index'] + rows,
+      cursor: data.message['next-cursor'],
       rows: rows
     })
   }
 
-  return pager(getOpts({offset: offset, rows: rows}), next)
+  return pager(getOpts({cursor: '*', rows: rows}), next)
 }
