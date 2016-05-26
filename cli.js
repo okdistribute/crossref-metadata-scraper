@@ -28,7 +28,7 @@ readStream.on('data', function (data) {
       var bibjson = {
         title: items[i]['title'][0],
         doi: items[i]['DOI'],
-        authors: convertAuthors(items[i]['author']),
+        authors: items[i]['author'] ? convertAuthors(items[i]['author']) : [],
         journal: items[i]['container-title'][0],
         URL: items[i]['URL']
       }
